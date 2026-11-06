@@ -154,6 +154,43 @@ function withinFreshness(article, maxAgeHours) {
   return Date.now() - t <= maxAgeHours * 3600 * 1000;
 }
 
+const OG_IMAGE_TIMEOUT_MS = 5000;
+const MAX_IMAGE_FETCH = 30; // Worker 서브리퀘스트 한도 보호 + 실제로 화면에 노출될 만큼만
+
+// 기사 원문의 og:image(그 기사에 실제로 쓰인 대표 사진)를 가져온다.
+// 네이버 이미지 검색 등으로 "연관된" 이미지를 따로 찾는 대신, 해당 기사 그 자체의 이미지를 쓴다.
+async function fetchOgImage(url) {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), OG_IMAGE_TIMEOUT_MS);
+    const resp = await fetch(url, {
+      signal: controller.signal,
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SavingsBankNewsBot/1.0)' },
+    });
+    clearTimeout(timer);
+    if (!resp.ok) return null;
+    const html = await resp.text();
+    const match =
+      html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
+      html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) ||
+      html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
+    if (!match) return null;
+    const img = match[1];
+    return img.startsWith('//') ? 'https:' + img : img;
+  } catch {
+    return null; // 느리거나 차단하는 매체는 그냥 이미지 없이 표시
+  }
+}
+
+async function attachImages(articles) {
+  const targets = articles.slice(0, MAX_IMAGE_FETCH);
+  const images = await Promise.all(targets.map((a) => fetchOgImage(a.link)));
+  targets.forEach((a, i) => {
+    if (images[i]) a.image = images[i];
+  });
+  return articles;
+}
+
 async function classifyAds(articles, env) {
   if (articles.length === 0) return articles;
 

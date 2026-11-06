@@ -7,4 +7,4 @@ crons = ["*/30 * * * *"]
 
 [[kv_namespaces]]
 binding = "SB_NEWS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "674dcd50e08b4496b6bebe64fd40d62e"
