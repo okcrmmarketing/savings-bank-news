@@ -1,117 +1,45 @@
 :root {
-  --paper: #ffffff;
-  --paper-dark: #f4f4f4;
-  --ink: #111111;
-  --ink-dim: #595959;
-  --accent: #9e1b1b;
-  --border: #d4d4d4;
+  --bg: #f6f7f9;
+  --card-bg: #ffffff;
+  --border: #e3e6ea;
+  --text: #1c2026;
+  --text-dim: #6b7280;
+  --accent: #2f6fed;
+  --chip-bg: #eef1f6;
+  --chip-active-bg: #2f6fed;
+  --chip-active-text: #ffffff;
 }
 
 * { box-sizing: border-box; }
 
-html, body {
-  margin: 0;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 body {
-  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-  color: var(--ink);
-  background-color: var(--paper);
-  border: 8px solid var(--ink);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* ---- EXCLUSIVE 스트립 ---- */
-.exclusive-strip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  background: var(--ink);
-  color: #fff;
-  padding: 4px 14px;
-}
-.exclusive-badge {
-  display: inline-block;
-  background: #fff;
-  color: var(--ink);
-  font-family: 'Anton', 'Black Han Sans', sans-serif;
-  font-size: 13px;
-  letter-spacing: 1px;
-  padding: 2px 10px;
-  border: 2px solid var(--ink);
-  transform: rotate(-2deg);
-  flex-shrink: 0;
-}
-.exclusive-filler {
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  opacity: 0.85;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* ---- 제호(masthead) ---- */
 .topbar {
-  background: var(--paper-dark);
-  border-bottom: 4px double var(--ink);
-  text-align: center;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
 }
 .topbar-inner {
-  max-width: 1100px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 18px 20px 16px;
-}
-.motto {
-  font-family: 'Playfair Display', 'Noto Serif KR', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0 0 4px;
+  padding: 28px 20px 20px;
 }
 .topbar h1 {
-  margin: 0;
-  font-family: '궁서', 'Gungsuh', 'Song Myung', 'Noto Serif KR', serif;
-  font-size: 46px;
-  letter-spacing: 0;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.12);
-  filter: url(#inkDistort);
-}
-.masthead-rule {
-  height: 3px;
-  margin: 10px auto 8px;
-  max-width: 640px;
-  background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 12px);
-  opacity: 0.6;
+  margin: 0 0 6px;
+  font-size: 22px;
 }
 .subtitle {
   margin: 0;
-  color: var(--ink-dim);
-  font-size: 13px;
-  font-style: italic;
-}
-
-.dateline {
-  display: flex;
-  justify-content: space-between;
-  max-width: 640px;
-  margin: 12px auto 0;
-  padding-top: 6px;
-  border-top: 1px solid var(--ink);
-  font-size: 11.5px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--text-dim);
+  font-size: 14px;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -122,374 +50,127 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0;
-  font-size: 12.5px;
-  letter-spacing: 0.3px;
+  gap: 6px;
 }
 .chip {
-  padding: 0 10px;
-  color: var(--ink-dim);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--text);
+  font-size: 13px;
   cursor: pointer;
+  border: 1px solid transparent;
   user-select: none;
-  font-family: 'Noto Serif KR', serif;
-  border-right: 1px solid var(--border);
 }
-.chip:first-child { padding-left: 0; }
-.chip:last-child { border-right: none; }
 .chip.active {
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: underline;
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
 }
 
 .status {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--ink-dim);
-  font-size: 12px;
-  font-style: italic;
+  color: var(--text-dim);
+  font-size: 13px;
 }
 
 .refresh-btn {
-  border: none;
-  border-bottom: 1px solid var(--ink);
-  background: none;
-  padding: 0 1px 1px;
-  font-size: 12px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
   cursor: pointer;
-  color: var(--ink);
-  font-family: 'Noto Serif KR', serif;
-  letter-spacing: 0.3px;
+  color: var(--text);
 }
 .refresh-btn:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  background: var(--chip-bg);
 }
 
-/* ---- 기사 카드 (신문 다단 느낌 — 예언자일보처럼 좁은 다단 구성) ---- */
-.news-grid-wrap {
-  perspective: 1600px;
-}
 .news-grid {
-  column-count: 3;
-  column-gap: 22px;
-  column-rule: 2px solid var(--ink);
-  transform-origin: center;
-  transition: transform 0.32s cubic-bezier(.22,.9,.32,1), opacity 0.32s ease;
+  display: grid;
+  gap: 12px;
 }
-
-/* 종이가 사르륵 미끄러지듯 넘어가는 효과 — 회전 없이 슬라이드+페이드만, 페이지 전환 시 한 번만 */
-.news-grid.flip-out-next { transform: translateX(-3%); opacity: 0; }
-.news-grid.flip-out-prev { transform: translateX(3%); opacity: 0; }
-.news-grid.flip-in-prep-next { transform: translateX(3%); opacity: 0; transition: none; }
-.news-grid.flip-in-prep-prev { transform: translateX(-3%); opacity: 0; transition: none; }
 
 .card {
-  display: grid;
-  grid-template-columns: 3px 1fr;
-  gap: 14px;
-  padding: 10px 2px;
-  border-bottom: 1px solid var(--border);
-  break-inside: avoid-column;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
 }
-.card:first-child { padding-top: 4px; }
-
-/* 1면(page 1)은 다단 흐름이 아니라 레퍼런스처럼 블록 콜라주 그리드로 */
-.news-grid.front-page {
-  column-count: 1;
-  column-gap: 0;
-}
-
-/* 세로 스트랩 라벨 — 실제 키워드/출처를 세로로, 레퍼런스의 "THERE" 같은 세로 글자 */
-.card.has-strap {
-  grid-template-columns: auto 3px 1fr;
-}
-.card-lead.has-strap { grid-template-columns: auto 4px 1fr; }
-.strap {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  font-family: '궁서', 'Gungsuh', 'Song Myung', serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: #fff;
-  background: var(--ink);
-  padding: 8px 3px;
-  white-space: nowrap;
-}
-
-/* 맨 위 톱기사 1건: 헤드라인은 전체 폭, 그 아래로 텍스트(좌)+사진(우) 2단 구성 —
-   "카드 박스"가 아니라 지면에 헤드라인·사진이 떠 있는 레퍼런스 구조를 따른다 */
-.card-lead {
-  column-span: all;
-  grid-template-columns: 4px 1fr;
-  border-bottom: 3px solid var(--ink);
-  padding: 4px 2px 14px;
-  margin-bottom: 6px;
-}
-.card-lead .card-title {
-  display: block;
-  font-size: 48px;
-  line-height: 1.05;
-  margin-bottom: 14px;
-  filter: url(#inkDistort);
-}
-.card-lead .card-title::before { content: '☞ '; }
-
-.card-lead .card-body {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  grid-template-areas: "head head" "desc photo" "meta photo";
-  column-gap: 24px;
-  align-items: start;
-}
-.card-lead .card-head { grid-area: head; display: block; margin: 0; }
-.card-lead .card-head .card-time { display: block; margin-top: 2px; }
-.card-lead .card-desc { grid-area: desc; font-size: 15px; margin: 0; }
-.card-lead .card-meta { grid-area: meta; margin-top: 6px; }
-.card-lead .card-photo {
-  grid-area: photo;
-  height: 100%;
-  min-height: 200px;
-  margin: 0;
-}
-
-/* 2순위 헤드라인(세컨드 톱) — 사진 없이 텍스트 중심, 장식 대문자로 지면감 */
-.card-tier2 {
-  column-span: all;
-  border-bottom: 3px solid var(--ink);
-  margin: 10px 0 6px;
-  padding: 0 2px 10px;
-}
-.card-tier2 .card-title { font-size: 32px; line-height: 1.15; filter: url(#inkDistort); }
-
-/* 하단 3단 블록 — WIZARD PRISON BLUNDER 류의 콜라주 묶음, 사진 없이 헤드라인+장식 대문자만 */
-.block-row {
-  column-span: all;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr 1fr;
-  gap: 0;
-  margin-top: 4px;
-}
-.block-row .card {
-  border-bottom: none;
-  border-right: 2px solid var(--ink);
-  padding: 8px 16px;
-}
-.block-row .card:last-child { border-right: none; }
-.card-block .card-title { font-size: 20px; line-height: 1.2; filter: url(#inkDistort); }
-
-@media (max-width: 760px) {
-  .block-row { grid-template-columns: 1fr; }
-  .block-row .card { border-right: none; border-bottom: 2px solid var(--ink); }
-  .block-row .card:last-child { border-bottom: none; }
-}
-
-/* 기사 발행 매체를 상징하는 정적 색 바 (움직임 없음, 장식용 이미지 대신 키워드 구분용) */
-.card-rule {
-  width: 3px;
-  background: var(--border);
-  border-radius: 1px;
-}
-.card-lead .card-rule { width: 4px; background: var(--accent); }
-
-.card-body { min-width: 0; }
-
-/* 실제 기사 사진 - 신문 사진판처럼 흑백 하프톤 느낌(움직임 없음) */
-.card-photo {
-  display: block;
-  width: 100%;
-  height: 85px;
-  object-fit: cover;
-  margin-bottom: 6px;
-  border: 1px solid var(--ink);
-  filter: grayscale(1) contrast(1.12);
-}
-.card-lead .card-photo { height: 180px; }
 
 .card-head {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
 .card-title {
-  font-family: '궁서', 'Gungsuh', 'Song Myung', 'Noto Serif KR', serif;
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  color: var(--ink);
-  line-height: 1.3;
+  color: var(--text);
+  line-height: 1.4;
 }
 .card-title:hover {
   color: var(--accent);
-  text-decoration: underline;
 }
 
 .card-time {
-  font-size: 11px;
-  color: var(--ink-dim);
+  font-size: 12px;
+  color: var(--text-dim);
   white-space: nowrap;
-  font-style: italic;
 }
 
 .card-desc {
-  font-size: 13.5px;
-  color: var(--ink-dim);
-  line-height: 1.6;
-  margin: 4px 0 8px;
-  text-align: justify;
+  font-size: 14px;
+  color: #3a3f46;
+  line-height: 1.5;
+  margin: 6px 0 10px;
 }
 
-.card-lead .card-desc::first-letter,
-.card-tier2 .card-desc::first-letter,
-.card-block .card-desc::first-letter {
-  float: left;
-  font-family: '궁서', 'Gungsuh', 'Song Myung', serif;
-  color: var(--ink);
-  padding: 2px 6px 0 0;
-  filter: url(#inkDistort);
-}
-.card-lead .card-desc::first-letter { font-size: 46px; line-height: 0.78; }
-.card-tier2 .card-desc::first-letter { font-size: 34px; line-height: 0.78; }
-.card-block .card-desc::first-letter { font-size: 26px; line-height: 0.78; }
-
-/* 뱃지 대신 평문 바이라인(실제 신문의 출처 표기 방식) */
 .card-meta {
-  font-size: 11.5px;
-  color: var(--ink-dim);
-  font-style: italic;
-  letter-spacing: 0.2px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
 }
-.card-meta .kw {
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--chip-bg);
+  color: var(--text-dim);
+}
+.badge.keyword {
   color: var(--accent);
-  font-style: normal;
+  background: #eaf1ff;
 }
 
 .empty-state {
   text-align: center;
-  color: var(--ink-dim);
+  color: var(--text-dim);
   padding: 60px 0;
-  font-style: italic;
-}
-
-.pager {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
-}
-.page-btn {
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Noto Serif KR', serif;
-  font-size: 13px;
-  padding: 6px 14px;
-  border-radius: 2px;
-  cursor: pointer;
-}
-.page-btn:hover:not(:disabled) {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-.page-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-.page-indicator {
-  font-size: 13px;
-  color: var(--ink-dim);
-  font-style: italic;
-  min-width: 48px;
-  text-align: center;
 }
 
 .footer {
   text-align: center;
-  color: var(--ink-dim);
-  font-size: 11px;
-  padding: 14px 0 30px;
-  font-style: italic;
-  border-top: 1px solid var(--border);
-}
-
-/* 하단 섹션 인덱스 — 키워드별 실제 수집 건수(가짜 페이지 번호 아님) */
-.section-index {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0;
-  background: var(--ink);
-  color: #fff;
-  padding: 8px 14px;
-  font-family: '궁서', 'Gungsuh', 'Song Myung', serif;
+  color: var(--text-dim);
   font-size: 12px;
-  letter-spacing: 0.3px;
-}
-.section-index span {
-  padding: 0 10px;
-  border-right: 1px solid rgba(255,255,255,0.3);
-}
-.section-index span:last-child { border-right: none; }
-.section-index .n { color: #ffcf4d; margin-left: 3px; }
-
-@media (max-width: 1000px) {
-  .news-grid { column-count: 2; }
-}
-
-@media (max-width: 760px) {
-  .news-grid { column-count: 1; }
+  padding: 24px 0 40px;
 }
 
 @media (max-width: 560px) {
-  body { border-width: 5px; }
-  .exclusive-strip { padding: 3px 10px; }
-  .exclusive-badge { font-size: 11px; padding: 1px 7px; }
-  .exclusive-filler { display: none; }
-
   .topbar-inner, .container { padding-left: 14px; padding-right: 14px; }
-  .topbar h1 { font-size: 24px; letter-spacing: 0; }
-  .motto { font-size: 11px; letter-spacing: 1px; }
-  .subtitle { font-size: 11.5px; }
-  .dateline { font-size: 10px; max-width: 100%; }
-
-  .toolbar { gap: 6px; padding-bottom: 8px; }
-  .chips { font-size: 11px; }
-  .chip { padding: 0 7px; }
-
-  .news-grid { column-gap: 0; }
-  .card { padding: 12px 0; gap: 10px; }
-  .card-lead { padding-bottom: 14px; }
-
-  .card-photo { height: 70px; }
-  .card-lead .card-photo { height: 150px; }
-  .card-lead .card-desc::first-letter { font-size: 32px; padding: 1px 4px 0 0; }
-
-  .card-lead .card-title { font-size: 24px; }
-  .card-tier2 .card-title { font-size: 17px; }
-  .card-title { font-size: 14.5px; }
-  .card-desc { font-size: 12.5px; }
-  .card-meta { font-size: 10.5px; }
-
-  .section-index { font-size: 10.5px; }
-  .section-index span { padding: 0 6px; }
-
-  .pager { gap: 10px; }
-  .page-btn { padding: 5px 10px; font-size: 12px; }
+  .card-title { font-size: 15px; }
 }
